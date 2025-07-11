@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hanna!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        .polaroid {
+            background: white;
+            padding: 1rem 1rem 3rem 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: rotate(2deg);
+            transition: all 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .polaroid:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+        .polaroid:nth-child(even):hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+            z-index: 9999;
+            animation: confettiFall 5s linear forwards;
+        }
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-purple-200 min-h-screen font-sans">
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Header Section -->
+    <header class="text-center py-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-pink-50 opacity-60"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-7xl font-bold text-pink-600 mb-6 floating">Happy Birthday Hanna!</h1>
+            <p class="text-xl md:text-2xl text-purple-800 mb-8">Wishing you the most wonderful day filled with love, joy, and happiness!</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="createConfetti()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-birthday-cake mr-2"></i> Throw Confetti
+                </button>
+                <button onclick="playBirthdaySong()"audio autoplay>
+ <class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-music mr-2"></i> Play Song
+                    <audio id="birthdaySong">
+  <source src="ytmp3free.cc_halasz-judit-boldog-szletesnapot-youtubemp3free.org (1).mp3" type="audio/mpeg">
+  
+</audio>
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-pink-100 to-transparent"></div>
+    </header>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-16 bg-white bg-opacity-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-700 mb-12">Memories of You</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <!-- Polaroid-style photos -->
+                <div class="polaroid">
+                    <img src="kép5.jpg">
+                    <p class="text-center mt-2 text-gray-700">Your beautiful smile</p>
+                </div>
+                <div class="polaroid">
+                    <img src="kép3.jpg" alt="Hanna laughing" class="w-full h-64 object-cover">
+                    <p class="text-center mt-2 text-gray-700">Laughing with friends</p>
+                </div>
+                <div class="polaroid">
+                    <img src="kép2.jpg" alt="Hanna hang out with friends" class="w-full h-64 object-cover">
+                    <p class="text-center mt-2 text-gray-700">Enjoying the outdoors</p>
+                </div>
+                <div class="polaroid">
+                    <img src="kép1.jpg" alt="Hanna grimace" class="w-full h-64 object-cover">
+                    <p class="text-center mt-2 text-gray-700">Celebrating life</p>
+                </div>
+                <div class="polaroid">
+                    <img src="kép6.jpg" alt="Hanna portrait" class="w-full h-64 object-cover">
+                    <p class="text-center mt-2 text-gray-700">hanna is grimacing</p>
+                </div>
+                <div class="polaroid">
+                    <img src="kép7.jpg" alt="Hanna with friends" class="w-full h-64 object-cover">
+                    <p class="text-center mt-2 text-gray-700">With your favorite people</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Birthday Wishes Section -->
+    <section class="py-16 bg-gradient-to-br from-purple-100 to-pink-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-700 mb-12">Special Wishes for You</h2>
+            
+            <div class="bg-white bg-opacity-80 rounded-xl p-8 shadow-lg mb-8 transform transition-all hover:scale-102">
+                <div class="flex items-center mb-4">
+                    <div class="bg-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl mr-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pink-600">To the Most Amazing Person</h3>
+                </div>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Hanna, on your special day, I want you to know how much you mean to everyone around you. 
+                    Your kindness, warmth, and beautiful spirit light up every room you enter. 
+                    May this year bring you endless joy, success in all your endeavors, and dreams that come true. 
+                    You deserve the world and more! Happy Birthday!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-80 rounded-xl p-6 shadow-lg transform transition-all hover:scale-102">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-600">Wish #1</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        May your day be filled with love, laughter, and all your favorite things!
+                    </p>
+                </div>
+                <div class="bg-white bg-opacity-80 rounded-xl p-6 shadow-lg transform transition-all hover:scale-102">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-pink-400 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-pink-600">Wish #2</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Wishing you health, happiness, and success in everything you do this year!
+                    </p>
+                </div>
+                <div class="bg-white bg-opacity-80 rounded-xl p-6 shadow-lg transform transition-all hover:scale-102">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-yellow-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-600">Wish #3</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Cheers to another year of amazing adventures and beautiful memories!
+                    </p>
+                </div>
+                <div class="bg-white bg-opacity-80 rounded-xl p-6 shadow-lg transform transition-all hover:scale-102">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-600">Wish #4</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        May all your dreams and wishes come true in this magical year ahead!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="py-16 bg-white bg-opacity-70">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-purple-700 mb-6">Celebration Countdown</h2>
+            <p class="text-xl text-gray-700 mb-8">The party starts in:</p>
+            
+            <div class="flex justify-center space-x-2 sm:space-x-4">
+                <div class="bg-pink-500 text-white rounded-lg p-4 w-20 sm:w-24 shadow-lg">
+                    <div class="text-3xl sm:text-4xl font-bold" id="days">00</div>
+                    <div class="text-sm sm:text-base">Days</div>
+                </div>
+                <div class="bg-purple-500 text-white rounded-lg p-4 w-20 sm:w-24 shadow-lg">
+                    <div class="text-3xl sm:text-4xl font-bold" id="hours">00</div>
+                    <div class="text-sm sm:text-base">Hours</div>
+                </div>
+                <div class="bg-pink-400 text-white rounded-lg p-4 w-20 sm:w-24 shadow-lg">
+                    <div class="text-3xl sm:text-4xl font-bold" id="minutes">00</div>
+                    <div class="text-sm sm:text-base">Minutes</div>
+                </div>
+                <div class="bg-purple-400 text-white rounded-lg p-4 w-20 sm:w-24 shadow-lg">
+                    <div class="text-3xl sm:text-4xl font-bold" id="seconds">00</div>
+                    <div class="text-sm sm:text-base">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-purple-800 text-white py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-2xl text-pink-300 hover:text-white transition-colors">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="text-2xl text-pink-300 hover:text-white transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-2xl text-pink-300 hover:text-white transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-2xl text-pink-300 hover:text-white transition-colors">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <p class="mb-4">Made with <i class="fas fa-heart text-pink-400"></i> for Hanna's Special Day</p>
+            <p class="text-sm text-purple-300">© 2023 Hanna's Birthday Celebration. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Birthday Song Audio (hidden) -->
+    <audio id="birthdaySong" src="https://" preload="auto"></audio>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            // Set the date we're counting down to (next birthday)
+            const now = new Date();
+            let birthday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            
+            // If birthday already passed this year, set for next year
+            if (now > birthday) {
+                birthday = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate());
+            }
+            
+            const distance = birthday - now;
+            
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update the countdown every 1 second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Confetti Effect
+        function createConfetti() {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.getElementById('confetti-container').appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Play Birthday Song
+        function playBirthdaySong() {
+            const song = document.getElementById('birthdaySong');
+            song.currentTime = 0;
+            song.play();
+            
+            // Show alert
+            alert("🎵 Happy Birthday to you, dear Hanna! ");
+        }
+        
+        // Add floating effect to polaroid photos on hover
+        document.querySelectorAll('.polaroid').forEach(polaroid => {
+            polaroid.addEventListener('mouseenter', () => {
+                polaroid.style.transform = 'rotate(0deg) scale(1.05)';
+            });
+            polaroid.addEventListener('mouseleave', () => {
+                if (Array.from(document.querySelectorAll('.polaroid')).indexOf(polaroid) % 2 === 0) {
+                    polaroid.style.transform = 'rotate(2deg)';
+                } else {
+                    polaroid.style.transform = 'rotate(-2deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
